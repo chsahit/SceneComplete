@@ -87,6 +87,7 @@ python -m pip install --quiet --no-index --no-cache-dir pytorch3d -f https://dl.
 conda install boost-cpp
 
 # Build extensions, ensure that your CONDA_PREFIX points to your miniconda3 setup (e.g., /home/<username>/miniconda3)
+unset NVCC_PREPEND_FLAGS
 CMAKE_PREFIX_PATH=$CONDA_PREFIX/lib/python3.9/site-packages/pybind11/share/cmake/pybind11 bash build_all_conda.sh
 
 # Finally, install SceneComplete as a python package
@@ -98,7 +99,7 @@ pip install -e .
 
 ## 🚀 Usage
 ### Downloading Pretrained Weights
-We provide a script to download the pretrained weights of individual submodules. 
+We provide a script to download the pretrained weights of individual submodules. Note, you have to be in the `scenecomplete` conda env to be able to use `gdown`, it is not installed by default in the `foundationpose` env. 
 
 ```bash
 cd scenecomplete/modules/weights
